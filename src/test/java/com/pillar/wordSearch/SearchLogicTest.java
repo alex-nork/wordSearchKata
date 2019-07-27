@@ -27,7 +27,7 @@ public class SearchLogicTest {
 	public void leftToRightTest() {
 		String firstLine = scanner.nextLine();
 		//first test to see if inputScanner gets first line and returns the unaltered String
-		assertEquals("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA", logic.leftToRight(firstLine));
+		assertEquals("BONES", logic.leftToRight(firstLine));
 	}
 	
 	
