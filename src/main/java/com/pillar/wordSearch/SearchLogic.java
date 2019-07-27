@@ -30,8 +30,8 @@ public class SearchLogic {
 		return letters;
 	}
 	
-	public boolean doesContainSearchWord() {
-		return false;
+	public boolean doesContainSearchWord(String searchWord, String lettersBeingSearched) {
+		return (lettersBeingSearched.contains(searchWord));
 	}
 	
 }

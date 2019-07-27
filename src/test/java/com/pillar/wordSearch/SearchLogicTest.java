@@ -75,9 +75,9 @@ public class SearchLogicTest {
 	public void doesContainSearchWordTest() {
 		//checking to see if first line of letters contains a certain word
 		String nextLine = scanner.nextLine();
-		String lettersToSearch = "UMKHULKINVJOCWE";
-		String lettersFromFile = logic.stringOfLetters(nextLine);
+		String searchWord = "HULK";
+		String lettersBeingSearched = logic.stringOfLetters(nextLine);
 		
-		assertEquals(true, logic.doesContainSearchWord());
+		assertEquals(true, logic.doesContainSearchWord(searchWord, lettersBeingSearched));
 	}
 }
