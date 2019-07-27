@@ -30,5 +30,8 @@ public class SearchLogic {
 		return letters;
 	}
 	
+	public boolean doesContainSearchWord() {
+		return false;
+	}
 	
 }

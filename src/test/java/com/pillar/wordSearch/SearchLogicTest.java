@@ -70,4 +70,14 @@ public class SearchLogicTest {
 		
 		assertEquals(lettersToSearch, lettersFromFile);
 	}
+	
+	@Test
+	public void doesContainSearchWordTest() {
+		//checking to see if first line of letters contains a certain word
+		String nextLine = scanner.nextLine();
+		String lettersToSearch = "UMKHULKINVJOCWE";
+		String lettersFromFile = logic.stringOfLetters(nextLine);
+		
+		assertEquals(true, logic.doesContainSearchWord());
+	}
 }
