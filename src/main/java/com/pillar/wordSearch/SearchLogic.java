@@ -21,10 +21,13 @@ public class SearchLogic {
 		return searchLetters;
 	}
 	
-	public String stringOfLetters(String[] searchLetters) {
-		
-		
-		return null;
+	public String stringOfLetters(String searchLetters) {
+		String[] lettersAsArray = lettersToSearch(searchLetters);
+		String letters = ""; 
+		for(String letter : lettersAsArray) {
+			letters += letter;
+		}
+		return letters;
 	}
 	
 	

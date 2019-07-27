@@ -62,11 +62,11 @@ public class SearchLogicTest {
 	}
 	
 	@Test
-	public void stringOfLetters() {
+	public void stringOfLettersTest() {
 		//turning the string[] into a string so that .contains can be used on it later
 		String nextLine = scanner.nextLine();
 		String lettersToSearch = "UMKHULKINVJOCWE";
-		String lettersFromFile = logic.firstLine(nextLine);
+		String lettersFromFile = logic.stringOfLetters(nextLine);
 		
 		assertEquals(lettersToSearch, lettersFromFile);
 	}
