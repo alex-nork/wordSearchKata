@@ -15,5 +15,11 @@ public class SearchLogic {
 		
 	}
 	
+	public String[] lettersToSearch(String lineOfLetters) {
+		
+		
+		return null;
+	}
+	
 	
 }
