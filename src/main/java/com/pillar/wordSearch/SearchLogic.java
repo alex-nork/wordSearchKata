@@ -2,9 +2,16 @@ package com.pillar.wordSearch;
 
 public class SearchLogic {
 
-	public String leftToRight(String rowOfLetters) {
+	public String firstLine(String firstLine) {
 		
-		return rowOfLetters;
+		return firstLine;
+		
+	}
+	
+	public String[] searchWordsSeparated(String firstLine) {
+		
+		String[] searchWords = firstLine.split(",");
+		return searchWords;
 		
 	}
 	
