@@ -4,7 +4,7 @@ public class SearchLogic {
 
 	public String leftToRight(String rowOfLetters) {
 		
-		return null;
+		return rowOfLetters;
 		
 	}
 	
