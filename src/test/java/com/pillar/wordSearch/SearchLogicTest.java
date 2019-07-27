@@ -51,9 +51,23 @@ public class SearchLogicTest {
 	
 	@Test
 	public void lettersToSearchTest() {
+		//essentially same test as above but for first row of letters
 		String nextLine = scanner.nextLine();
 		String[] lettersToSearch = new String[] {"U","M","K","H","U","L","K","I","N","V","J","O","C","W","E"};
 		String[] lettersFromFile = logic.lettersToSearch(nextLine); 
+		
 		assertEquals(lettersToSearch.length, lettersFromFile.length);
+		assertEquals(lettersToSearch[0], lettersFromFile[0]);
+		assertEquals(lettersToSearch[14], lettersFromFile[14]);
+	}
+	
+	@Test
+	public void stringOfLetters() {
+		//turning the string[] into a string so that .contains can be used on it later
+		String nextLine = scanner.nextLine();
+		String lettersToSearch = "UMKHULKINVJOCWE";
+		String lettersFromFile = logic.firstLine(nextLine);
+		
+		assertEquals(lettersToSearch, lettersFromFile);
 	}
 }

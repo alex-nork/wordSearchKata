@@ -21,5 +21,11 @@ public class SearchLogic {
 		return searchLetters;
 	}
 	
+	public String stringOfLetters(String[] searchLetters) {
+		
+		
+		return null;
+	}
+	
 	
 }
