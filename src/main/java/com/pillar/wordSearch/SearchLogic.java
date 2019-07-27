@@ -17,8 +17,8 @@ public class SearchLogic {
 	
 	public String[] lettersToSearch(String lineOfLetters) {
 		
-		
-		return null;
+		String[] searchLetters = lineOfLetters.split(",");
+		return searchLetters;
 	}
 	
 	

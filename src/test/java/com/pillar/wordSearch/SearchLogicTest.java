@@ -54,6 +54,6 @@ public class SearchLogicTest {
 		String nextLine = scanner.nextLine();
 		String[] lettersToSearch = new String[] {"U","M","K","H","U","L","K","I","N","V","J","O","C","W","E"};
 		String[] lettersFromFile = logic.lettersToSearch(nextLine); 
-		assertEquals(lettersToSearch.length, lettersFromFile);
+		assertEquals(lettersToSearch.length, lettersFromFile.length);
 	}
 }
