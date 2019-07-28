@@ -91,7 +91,6 @@ public class SearchLogicTest {
 	
 	@Test
 	public void reverseSearchWordTest() {
-		String nextLine = scanner.nextLine();
 		String searchWord = "HULK";
 		assertEquals("KLUH", logic.reverseSearchWord(searchWord));
 	}
