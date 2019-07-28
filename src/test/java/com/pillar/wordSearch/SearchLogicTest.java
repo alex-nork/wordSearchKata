@@ -104,6 +104,8 @@ public class SearchLogicTest {
 		testMap.put(1, "BEH");
 		testMap.put(2, "CFI");
 		
-		assertEquals("ABC", logic.flippedGrid().get(0));
+		assertEquals("ABC", logic.flippedGrid(testMap).get(0));
+		assertEquals("DEF", logic.flippedGrid(testMap).get(1));
+		assertEquals("GHI", logic.flippedGrid(testMap).get(2));
 	}
 }

@@ -1,6 +1,7 @@
 package com.pillar.wordSearch;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 public class SearchLogic {
 
@@ -64,8 +65,23 @@ public class SearchLogic {
 		return reversedSearchWord;
 	}
 	
-	public Map<Integer,String> flippedGrid() {
-		return null;
+	public Map<Integer,String> flippedGrid(Map<Integer,String> letters) {
+		
+		Map<Integer,String> flippedLetters = new TreeMap<Integer,String>();
+		Integer xCoordinate = 0;
+		Integer key = 0;
+		
+		
+		for(int i = 0; i < letters.get(0).length(); i++) {
+			String flippedLine = "";
+			for(Map.Entry<Integer, String> line : letters.entrySet()) {
+				flippedLine += line.getValue().substring(i, i + 1);
+			}
+			flippedLetters.put(key, flippedLine);
+			key++;
+		}
+		
+		return flippedLetters;
 	}
 
 }
