@@ -39,19 +39,19 @@ public class FileReader {
 				}
 				break;
 			}
-			
-				Map<Integer, String> fullGrid = gridToMap(inputFile);
-				String[] words = searchWords(fullGrid);
-				Map<Integer, String> letters = letterGrid(fullGrid);
-				leftToRightSearch(words, letters);
-				System.out.println();
-				rightToLeftSearch(words, letters);
 
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			Map<Integer, String> fullGrid = gridToMap(inputFile);
+			String[] words = searchWords(fullGrid);
+			Map<Integer, String> letters = letterGrid(fullGrid);
+			leftToRightSearch(words, letters);
+			System.out.println();
+			rightToLeftSearch(words, letters);
 
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
+
+	}
 
 	// read the file once and store it in memory using a TreeMap
 	private Map<Integer, String> gridToMap(File inputFile) throws FileNotFoundException {
@@ -59,7 +59,7 @@ public class FileReader {
 		Map<Integer, String> grid = new TreeMap<Integer, String>();
 
 		Scanner inputScanner = new Scanner(inputFile.getAbsoluteFile());
-		
+
 		grid.put(lineNumber, inputScanner.nextLine());
 		lineNumber++;
 		while (inputScanner.hasNextLine()) {
@@ -73,7 +73,7 @@ public class FileReader {
 	// returns a String[] holding each search word
 	private String[] searchWords(Map<Integer, String> grid) {
 		String[] words = logic.searchWordsSeparated(grid.get(0));
-		
+
 		return words;
 	}
 
@@ -81,39 +81,39 @@ public class FileReader {
 	private Map<Integer, String> letterGrid(Map<Integer, String> fullGrid) {
 		Set<Integer> keys = fullGrid.keySet();
 		Map<Integer, String> letterGrid = new TreeMap<Integer, String>();
-		
-		for(int i = 0; i < keys.size() - 1; i++) {
+
+		for (int i = 0; i < keys.size() - 1; i++) {
 			letterGrid.put(i, fullGrid.get(i + 1));
-			
+
 		}
 		return letterGrid;
 	}
 
-//	private void topToBottomSearch(String[] searchWords, Map<Integer, String> letters) throws FileNotFoundException {
-//		ArrayList<String> topDownLetters = new ArrayList<String>();
-//
-//		for (String word : searchWords) {
-//			// this will be referenced for x-coordinate
-//			int rowNumber = 0;
-//			// new Scanner so that it starts reading from the first line which each
-//			// searchWord
-//			Scanner newInputScanner = new Scanner(inputFile.getAbsoluteFile());
-//			if (newInputScanner.hasNextLine()) {
-//				newInputScanner.nextLine();
-//			}
-//			while (newInputScanner.hasNextLine()) {
-//				String line = newInputScanner.nextLine();
-//				topDownLetters.add(line.split("")[rowNumber]);
-//			}
-//		}
-//	}
+	// private void topToBottomSearch(String[] searchWords, Map<Integer, String>
+	// letters) throws FileNotFoundException {
+	// ArrayList<String> topDownLetters = new ArrayList<String>();
+	//
+	// for (String word : searchWords) {
+	// // this will be referenced for x-coordinate
+	// int rowNumber = 0;
+	// // new Scanner so that it starts reading from the first line which each
+	// // searchWord
+	// Scanner newInputScanner = new Scanner(inputFile.getAbsoluteFile());
+	// if (newInputScanner.hasNextLine()) {
+	// newInputScanner.nextLine();
+	// }
+	// while (newInputScanner.hasNextLine()) {
+	// String line = newInputScanner.nextLine();
+	// topDownLetters.add(line.split("")[rowNumber]);
+	// }
+	// }
+	// }
 
-	// this can likely be refactored further
 	private void leftToRightSearch(String[] searchWords, Map<Integer, String> letters) {
 		for (String word : searchWords) {
 			// this will be referenced for y-coordinate
 			int lineNumber = 0;
-			for(Map.Entry<Integer, String> row : letters.entrySet()) {
+			for (Map.Entry<Integer, String> row : letters.entrySet()) {
 				// returns boolean after checking if the searchWord is contained in the string
 				// of letters on the current line (already split and concatenated)
 				if (logic.doesContainSearchWord(word, (row.getValue()))) {
@@ -139,7 +139,7 @@ public class FileReader {
 		for (String word : searchWords) {
 			// this will be referenced for y-coordinate
 			int lineNumber = 0;
-			for(Map.Entry<Integer, String> row : letters.entrySet()) {
+			for (Map.Entry<Integer, String> row : letters.entrySet()) {
 				// this is where the searchWord is flipped
 				if (logic.doesContainSearchWord(logic.reverseSearchWord(word), row.getValue())) {
 					int[] xCoordinates = logic.xCoordinates(row.getValue(), word);

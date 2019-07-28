@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -93,5 +95,15 @@ public class SearchLogicTest {
 	public void reverseSearchWordTest() {
 		String searchWord = "HULK";
 		assertEquals("KLUH", logic.reverseSearchWord(searchWord));
+	}
+	
+	@Test
+	public void flippedGridTest() {
+		Map<Integer,String> testMap = new TreeMap<Integer,String>();
+		testMap.put(0, "ADG");
+		testMap.put(1, "BEH");
+		testMap.put(2, "CFI");
+		
+		assertEquals("ABC", logic.flippedGrid().get(0));
 	}
 }
