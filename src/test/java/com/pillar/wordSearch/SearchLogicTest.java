@@ -86,6 +86,6 @@ public class SearchLogicTest {
 		String nextLine = scanner.nextLine();
 		String searchWord = "HULK";
 		int[] xCoordinates = new int[] {3, 4, 5, 6};
-		assertEquals(xCoordinates.length, logic.xCoordinates(nextLine));
+		assertEquals(xCoordinates.length, logic.xCoordinates(nextLine, searchWord).length);
 	}
 }

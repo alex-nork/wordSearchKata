@@ -34,9 +34,23 @@ public class SearchLogic {
 		return (lettersBeingSearched.contains(searchWord));
 	}
 	
-	public int[] xCoordinates(String line) {
+	public int[] xCoordinates(String line, String searchWord) {
+		String[] lineLetters = lettersToSearch(line);
+		String[] searchWordLetters = lettersToSearch(searchWord);
 		
-		return null;
+		int[] xCoordinates = new int[searchWord.length()];
+		int counter = 0;
+		for(String searchLetter : searchWordLetters) {
+			for(int i = 0; i < lineLetters.length - 1; i++) {
+				if(lineLetters[i].equals(searchLetter)) {
+					xCoordinates[counter] = i;
+					counter++;
+					break;
+				}
+			}
+			
+		}
+		return xCoordinates;
 	}
 	
 }
