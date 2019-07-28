@@ -2,7 +2,10 @@ package com.pillar.wordSearch;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class FileReader {
 
@@ -48,7 +51,44 @@ public class FileReader {
 		}
 
 	}
-
+	
+	//read the file once and store it in memory using a TreeMap
+	private Map<Integer,String> gridToMap(File inputFile) throws FileNotFoundException {
+		Integer lineNumber = 0;
+		Map<Integer,String> grid = new TreeMap<Integer,String>();
+		
+		Scanner inputScanner = new Scanner(inputFile.getAbsoluteFile());
+		while (inputScanner.hasNextLine()) {
+			String line =inputScanner.nextLine();
+			grid.put(lineNumber, logic.stringOfLetters(line));
+		}
+		return grid;
+	}
+	
+	//returns a String[] holding each search word
+	private String[] searchWords(Map<Integer,String> grid) {
+		return logic.searchWordsSeparated(grid.get(0));
+	}
+	
+	private void topToBottomSearch(String[] searchWords, File inputFile) throws FileNotFoundException {
+		ArrayList<String> topDownLetters = new ArrayList<String>();
+		
+		for (String word : searchWords) {
+			// this will be referenced for x-coordinate
+			int rowNumber = 0;
+			// new Scanner so that it starts reading from the first line which each
+			// searchWord
+			Scanner newInputScanner = new Scanner(inputFile.getAbsoluteFile());
+			if (newInputScanner.hasNextLine()) {
+				newInputScanner.nextLine();
+			}
+			while (newInputScanner.hasNextLine()) {
+				String line = newInputScanner.nextLine();
+				topDownLetters.add(line.split("")[rowNumber]);
+			}
+		}
+	}
+	
 	// this can likely be refactored further
 	private void leftToRightSearch(String[] searchWords, File inputFile) throws FileNotFoundException {
 		for (String word : searchWords) {
