@@ -48,6 +48,8 @@ public class FileReader {
 			rightToLeftSearch(words, letters);
 			System.out.println();
 			topToBottomSearch(words, letters);
+			System.out.println();
+			bottomToTopSearch(words, letters);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -112,6 +114,28 @@ public class FileReader {
 		}
 	}
 	
+	private void bottomToTopSearch(String[] searchWords, Map<Integer,String> letters) {
+		for (String word : searchWords) {
+			// this will be referenced for y-coordinate
+			int rowNumber = 0;
+			Map<Integer,String> flippedLetters = logic.flippedGrid(letters);
+			for (Map.Entry<Integer, String> row : flippedLetters.entrySet()) {
+				// this is where the searchWord is flipped
+				if (logic.doesContainSearchWord(logic.reverseSearchWord(word), row.getValue())) {
+					int[] yCoordinates = logic.xCoordinates(row.getValue(), word);
+					System.out.print(word + ": ");
+					for (int i = yCoordinates.length; i > 0; i--) {
+						if (i == yCoordinates[0]) {
+							System.out.print("(" + rowNumber + "," + i + ")");
+						} else {
+							System.out.print("(" + rowNumber + "," + i + "),");
+						}
+					}
+				}
+				rowNumber++;
+			}
+		}
+	}
 
 	private void leftToRightSearch(String[] searchWords, Map<Integer, String> letters) {
 		for (String word : searchWords) {
