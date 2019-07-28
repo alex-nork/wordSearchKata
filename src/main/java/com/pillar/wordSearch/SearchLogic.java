@@ -34,4 +34,9 @@ public class SearchLogic {
 		return (lettersBeingSearched.contains(searchWord));
 	}
 	
+	public int[] xCoordinates(String line) {
+		
+		return null;
+	}
+	
 }

@@ -29,10 +29,16 @@ public class FileReader {
 				}
 				break;
 			}
-			//this will be referenced for y-coordinate
+		
+			/*
+			 * Here is where the logic methods will be called
+			 * These will include leftToRight, rightToLeft,
+			 * topToBottom, bottomToTop, and diagonal
+			 */
 			try (Scanner inputScanner = new Scanner(inputFile.getAbsoluteFile())) {
 				String[] searchWords = logic.searchWordsSeparated(inputScanner.nextLine());
 				for(String word : searchWords) {
+					//this will be referenced for y-coordinate
 					int lineNumber = 0;
 					Scanner newInputScanner = new Scanner(inputFile.getAbsoluteFile());
 					if(newInputScanner.hasNextLine()) {
@@ -41,14 +47,11 @@ public class FileReader {
 						while(newInputScanner.hasNextLine()) {
 							String line = newInputScanner.nextLine();
 							if(logic.doesContainSearchWord(word, logic.stringOfLetters((line)))) {
+								
 								System.out.println(word + ": " + lineNumber);
 							}
 							lineNumber++;
-							/*
-							 * Here is where the logic methods will be called
-							 * These will include leftToRight, rightToLeft,
-							 * topToBottom, bottomToTop, and diagonal
-							 */
+							
 						}
 					newInputScanner.close();
 				}
