@@ -88,4 +88,11 @@ public class SearchLogicTest {
 		int[] xCoordinates = new int[] {3, 4, 5, 6};
 		assertEquals(xCoordinates.length, logic.xCoordinates(nextLine, searchWord).length);
 	}
+	
+	@Test
+	public void reverseSearchWordTest() {
+		String nextLine = scanner.nextLine();
+		String searchWord = "HULK";
+		assertEquals("KLUH", logic.reverseSearchWord(searchWord));
+	}
 }

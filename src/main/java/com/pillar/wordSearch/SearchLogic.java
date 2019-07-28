@@ -53,4 +53,17 @@ public class SearchLogic {
 		return xCoordinates;
 	}
 	
+	public String reverseSearchWord(String searchWord) {
+		
+		String reversedSearchWord = "";
+		for(int i = searchWord.length() - 1; i >= 0; i--) {
+			reversedSearchWord += searchWord.charAt(i);
+		}
+		return reversedSearchWord;
+	}
 }
+
+
+
+
+
