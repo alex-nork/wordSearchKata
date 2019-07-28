@@ -64,23 +64,25 @@ public class SearchLogic {
 		}
 		return reversedSearchWord;
 	}
-	
-	public Map<Integer,String> flippedGrid(Map<Integer,String> letters) {
-		
-		Map<Integer,String> flippedLetters = new TreeMap<Integer,String>();
-		Integer xCoordinate = 0;
+
+	/*
+	 * this method flips the grid so (x,y) becomes (y,x) since grids will be square
+	 * this should make it easier to look for vertical words
+	 */
+	public Map<Integer, String> flippedGrid(Map<Integer, String> letters) {
+
+		Map<Integer, String> flippedLetters = new TreeMap<Integer, String>();
 		Integer key = 0;
-		
-		
-		for(int i = 0; i < letters.get(0).length(); i++) {
+
+		for (int i = 0; i < letters.get(0).length(); i++) {
 			String flippedLine = "";
-			for(Map.Entry<Integer, String> line : letters.entrySet()) {
+			for (Map.Entry<Integer, String> line : letters.entrySet()) {
 				flippedLine += line.getValue().substring(i, i + 1);
 			}
 			flippedLetters.put(key, flippedLine);
 			key++;
 		}
-		
+
 		return flippedLetters;
 	}
 

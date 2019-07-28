@@ -46,6 +46,8 @@ public class FileReader {
 			leftToRightSearch(words, letters);
 			System.out.println();
 			rightToLeftSearch(words, letters);
+			System.out.println();
+			topToBottomSearch(words, letters);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -89,25 +91,27 @@ public class FileReader {
 		return letterGrid;
 	}
 
-	// private void topToBottomSearch(String[] searchWords, Map<Integer, String>
-	// letters) throws FileNotFoundException {
-	// ArrayList<String> topDownLetters = new ArrayList<String>();
-	//
-	// for (String word : searchWords) {
-	// // this will be referenced for x-coordinate
-	// int rowNumber = 0;
-	// // new Scanner so that it starts reading from the first line which each
-	// // searchWord
-	// Scanner newInputScanner = new Scanner(inputFile.getAbsoluteFile());
-	// if (newInputScanner.hasNextLine()) {
-	// newInputScanner.nextLine();
-	// }
-	// while (newInputScanner.hasNextLine()) {
-	// String line = newInputScanner.nextLine();
-	// topDownLetters.add(line.split("")[rowNumber]);
-	// }
-	// }
-	// }
+	private void topToBottomSearch(String[] searchWords, Map<Integer,String> letters) {
+		for (String word : searchWords) {
+			int rowNumber = 0;
+			Map<Integer,String> flippedLetters = logic.flippedGrid(letters);
+			for (Map.Entry<Integer, String> row : flippedLetters.entrySet()) {
+				if (logic.doesContainSearchWord(word, (row.getValue()))) {
+					int[] yCoordinates = logic.xCoordinates(row.getValue(), word);
+					System.out.print(word + ": ");
+					for(int i = 0; i <yCoordinates.length; i++) {
+						if (i == yCoordinates.length - 1) {
+							System.out.print("(" + rowNumber + "," + i + ")");
+						} else {
+							System.out.print("(" + rowNumber + "," + i + "),");
+						}
+					}
+				}
+				rowNumber++;
+			}
+		}
+	}
+	
 
 	private void leftToRightSearch(String[] searchWords, Map<Integer, String> letters) {
 		for (String word : searchWords) {
