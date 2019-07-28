@@ -47,8 +47,16 @@ public class FileReader {
 						while(newInputScanner.hasNextLine()) {
 							String line = newInputScanner.nextLine();
 							if(logic.doesContainSearchWord(word, logic.stringOfLetters((line)))) {
-								
-								System.out.println(word + ": " + lineNumber);
+								int[] xCoordinates = logic.xCoordinates(line, word);
+								System.out.print(word + ": ");
+								for(int i = 0; i < xCoordinates.length; i++) {
+									if(i == xCoordinates.length - 1) {
+										System.out.print("(" + i + "," + lineNumber + ")");
+									}
+									else {
+										System.out.print("(" + i + "," + lineNumber + "),");
+									}
+								}
 							}
 							lineNumber++;
 							
