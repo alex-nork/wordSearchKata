@@ -108,4 +108,18 @@ public class SearchLogicTest {
 		assertEquals("DEF", logic.flippedGrid(testMap).get(1));
 		assertEquals("GHI", logic.flippedGrid(testMap).get(2));
 	}
+	
+	@Test
+	public void yCoordinatesTest() {
+		Map<Integer,String> testMap = new TreeMap<Integer,String>();
+		testMap.put(0, "AEIM");
+		testMap.put(1, "BFJN");
+		testMap.put(2, "CGKO");
+		testMap.put(3, "DHLP");
+		
+		Map<Integer,String> flippedMap = logic.flippedGrid(testMap);
+		String searchWord = "BCD";
+		int[] yCoordinates = new int[] {1, 2, 3};
+		assertEquals(yCoordinates[0], logic.yCoordinates(flippedMap.get(0), searchWord));
+	}
 }

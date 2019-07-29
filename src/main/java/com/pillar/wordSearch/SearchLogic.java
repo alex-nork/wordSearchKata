@@ -85,5 +85,9 @@ public class SearchLogic {
 
 		return flippedLetters;
 	}
+	
+	public int[] yCoordinates(String line, String searchWord) {
+		return null;
+	}
 
 }
