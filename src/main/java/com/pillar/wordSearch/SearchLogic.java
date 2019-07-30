@@ -11,7 +11,7 @@ public class SearchLogic {
 
 	}
 
-	public String[] searchWordsSeparated(String firstLine) {
+	public String[] separateSearchWords(String firstLine) {
 
 		String[] searchWords = firstLine.split(",");
 		return searchWords;
@@ -21,6 +21,12 @@ public class SearchLogic {
 	public String[] lettersToSearch(String lineOfLetters) {
 
 		String[] searchLetters = lineOfLetters.split(",");
+		return searchLetters;
+	}
+	
+	public String[] lettersToSearchVertical(String lineOfLetters) {
+
+		String[] searchLetters = lineOfLetters.split("");
 		return searchLetters;
 	}
 
@@ -39,14 +45,14 @@ public class SearchLogic {
 
 	public int[] xCoordinates(String line, String searchWord) {
 		String[] lineLetters = lettersToSearch(line);
-		String[] searchWordLetters = lettersToSearch(searchWord);
+		String[] searchWordLetters = searchWord.split("");
 
 		int[] xCoordinates = new int[searchWord.length()];
 		int counter = 0;
-		for (String searchLetter : searchWordLetters) {
-			for (int i = 0; i < lineLetters.length - 1; i++) {
-				if (lineLetters[i].equals(searchLetter)) {
-					xCoordinates[counter] = i;
+		for (int i = 0; i < searchWordLetters.length; i++) {
+			for (int j = 0; j < lineLetters.length - 1; j++) {
+				if (lineLetters[j].equals(searchWordLetters[i]) && (i == 0 || j > xCoordinates[i - 1])) {
+					xCoordinates[counter] = j;
 					counter++;
 					break;
 				}
@@ -87,7 +93,22 @@ public class SearchLogic {
 	}
 	
 	public int[] yCoordinates(String line, String searchWord) {
-		return null;
+		String[] lineLetters = lettersToSearchVertical(line);
+		String[] searchWordLetters = lettersToSearchVertical(searchWord);
+
+		int[] yCoordinates = new int[searchWord.length()];
+		int counter = 0;
+		for (String searchLetter : searchWordLetters) {
+			for (int i = 0; i < lineLetters.length - 1; i++) {
+				if (lineLetters[i].equals(searchLetter)) {
+					yCoordinates[counter] = i;
+					counter++;
+					break;
+				}
+			}
+
+		}
+		return yCoordinates;
 	}
 
 }

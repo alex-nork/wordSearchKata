@@ -70,12 +70,14 @@ public class FileReader {
 			grid.put(lineNumber, logic.stringOfLetters(line));
 			lineNumber++;
 		}
+		inputScanner.close();
 		return grid;
+		
 	}
 
 	// returns a String[] holding each search word
 	private String[] searchWords(Map<Integer, String> grid) {
-		String[] words = logic.searchWordsSeparated(grid.get(0));
+		String[] words = logic.separateSearchWords(grid.get(0));
 
 		return words;
 	}

@@ -32,19 +32,16 @@ public class SearchLogicTest {
 	}
 
 	@Test
-	public void firstLineTest() {
+	public void firstLineSuccessfullyReturnsFirstLineOfFile() {
 		// first test to see if inputScanner gets first line and returns the String
 		assertEquals("BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA", logic.firstLine(firstLine));
 	}
 
 	@Test
-	public void searchWordsSeparatedTest() {
+	public void separateSearchWordsByCommaReturnsStringArray() {
 		String[] searchWords = new String[] { "BONES", "KHAN", "KIRK", "SCOTTY", "SPOCK", "SULU", "UHURA" };
-		String[] firstLineWords = logic.searchWordsSeparated(firstLine);
-		/*
-		 * tests to see if the method is returning an array with the expected length and
-		 * with the expected values in the correct array indexes
-		 */
+		String[] firstLineWords = logic.separateSearchWords(firstLine);
+		
 		assertEquals(searchWords.length, firstLineWords.length);
 		assertEquals(searchWords[0], firstLineWords[0]);
 		assertEquals(searchWords[6], firstLineWords[6]);
@@ -80,15 +77,28 @@ public class SearchLogicTest {
 		String searchWord = "HULK";
 		String lettersBeingSearched = logic.stringOfLetters(nextLine);
 		
-		assertEquals(true, logic.doesContainSearchWord(searchWord, lettersBeingSearched));
+		boolean result = logic.doesContainSearchWord(searchWord, lettersBeingSearched);
+		
+		assertEquals(true, result);
 	}
 	
 	@Test
 	public void xCoordinatesTest() {
+		//Arrange
 		String nextLine = scanner.nextLine();
 		String searchWord = "HULK";
-		int[] xCoordinates = new int[] {3, 4, 5, 6};
-		assertEquals(xCoordinates.length, logic.xCoordinates(nextLine, searchWord).length);
+		int[] expectedXCoordinates = new int[] {3, 4, 5, 6};
+		
+		//Act
+		int expectedFirstCoordinate = expectedXCoordinates[0];
+		int actualFirstCoordinate = logic.xCoordinates(nextLine, searchWord)[0];
+		int expectedLastCoordinate = expectedXCoordinates[3];
+		int actualLastCoordinate = logic.xCoordinates(nextLine, searchWord)[3];
+		
+		//Assert
+		assertEquals(expectedXCoordinates.length, logic.xCoordinates(nextLine, searchWord).length);
+		assertEquals(expectedFirstCoordinate, actualFirstCoordinate);
+		assertEquals(expectedLastCoordinate, actualLastCoordinate);
 	}
 	
 	@Test
@@ -120,6 +130,6 @@ public class SearchLogicTest {
 		Map<Integer,String> flippedMap = logic.flippedGrid(testMap);
 		String searchWord = "BCD";
 		int[] yCoordinates = new int[] {1, 2, 3};
-		assertEquals(yCoordinates[0], logic.yCoordinates(flippedMap.get(0), searchWord));
+		assertEquals(yCoordinates[0], logic.yCoordinates(flippedMap.get(0), searchWord)[0]);
 	}
 }
